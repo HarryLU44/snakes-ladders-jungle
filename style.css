@@ -1,0 +1,33 @@
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  text-align: center;
+  background: url('https://cdn.pixabay.com/photo/2017/08/10/01/05/jungle-2619211_1280.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-shadow: 2px 2px #000;
+}
+#board-container {
+  margin: 20px auto;
+  border: 3px solid #145214;
+  box-shadow: 0 0 20px #0f0;
+  width: 600px;
+  height: 600px;
+  background: url('https://cdn.pixabay.com/photo/2016/03/05/22/45/tiles-1233536_1280.jpg') no-repeat center center;
+  background-size: cover;
+}
+#controls {
+  background-color: rgba(0,0,0,0.7);
+  display: inline-block;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+input, button {
+  font-size: 16px;
+  padding: 5px;
+}
