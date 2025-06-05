@@ -1,0 +1,30 @@
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  text-align: center;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Jungle_Book_inspired_jungle_painting.jpg/1024px-Jungle_Book_inspired_jungle_painting.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-shadow: 2px 2px #000;
+}
+#board-container {
+  margin: 20px auto;
+  border: 3px solid #145214;
+  box-shadow: 0 0 20px #0f0;
+  width: 600px;
+  height: 600px;
+}
+#controls {
+  background-color: rgba(0,0,0,0.7);
+  display: inline-block;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+input, button {
+  font-size: 16px;
+  padding: 5px;
+}
