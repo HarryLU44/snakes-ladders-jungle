@@ -11,10 +11,23 @@ const snakes = { 16: 6, 47: 26, 49: 11, 56: 53, 62: 19, 64: 60, 87: 24, 93: 73, 
 const ladders = { 1: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100 };
 
 function drawBoard() {
-  const background = new Image();
-  background.src = 'snake_ladder_overlay.svg';
-  background.onload = () => {
-    ctx.drawImage(background, 0, 0, 600, 600);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      const x = j * tileSize;
+      const y = i * tileSize;
+      ctx.strokeStyle = '#ffffff33';
+      ctx.strokeRect(x, y, tileSize, tileSize);
+      const num = 100 - (i * 10 + (i % 2 === 0 ? j : 9 - j));
+      ctx.fillStyle = '#fff';
+      ctx.fillText(num, x + 5, y + 15);
+    }
+  }
+
+  const overlay = new Image();
+  overlay.src = "https://upload.wikimedia.org/wikipedia/commons/2/24/Snakes_and_Ladders_board.svg";
+  overlay.onload = () => {
+    ctx.drawImage(overlay, 0, 0, 600, 600);
     drawPlayers();
   };
 }
@@ -34,7 +47,6 @@ function drawPlayers() {
 }
 
 function updateCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBoard();
 }
 
