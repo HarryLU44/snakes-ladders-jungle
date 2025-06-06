@@ -2,7 +2,7 @@
 let currentPlayer = 0;
 let positions = [0, 0];
 const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext(' '2d');
+const ctx = canvas.getContext('2d');
 const overlay = document.getElementById('overlay');
 const tileSize = 60;
 
