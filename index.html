@@ -1,31 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Snakes and Ladders - Jungle Edition</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darts Snakes & Ladders - Jungle Edition</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Darts Snakes & Ladders - Jungle Edition</h1>
   <div id="board-container">
     <canvas id="gameCanvas" width="600" height="600"></canvas>
+    <svg id="overlay" width="600" height="600"></svg>
   </div>
   <div id="controls">
     <p>Player <span id="current-player">1</span>'s turn</p>
-    <input type="number" id="score" placeholder="Enter dart score" />
+    <input type="number" id="score" placeholder="Enter dart score">
     <button onclick="movePlayer()">Move</button>
   </div>
-  <audio id="jungle-sound" loop autoplay>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_a0c816bf5f.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="snake-sound">
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/08/audio_23fe13b3e0.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="ladder-sound">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/23/audio_f7e6e2d59a.mp3" type="audio/mpeg" />
-  </audio>
   <script src="game.js"></script>
 </body>
 </html>
