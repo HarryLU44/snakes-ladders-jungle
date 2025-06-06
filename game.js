@@ -2,7 +2,7 @@
 let currentPlayer = 0;
 let positions = [0, 0];
 const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext(' '2d');
 const overlay = document.getElementById('overlay');
 const tileSize = 60;
 
@@ -26,14 +26,8 @@ function drawBoard() {
     }
   }
 
-  for (let [start, end] of Object.entries(snakes)) {
-    drawSnake(Number(start), Number(end));
-  }
-
-  for (let [start, end] of Object.entries(ladders)) {
-    drawLadder(Number(start), Number(end));
-  }
-
+  for (let [start, end] of Object.entries(snakes)) drawSnake(Number(start), Number(end));
+  for (let [start, end] of Object.entries(ladders)) drawLadder(Number(start), Number(end));
   drawPlayers();
 }
 
@@ -50,10 +44,10 @@ function drawSnake(start, end) {
   const s = getCellCenter(start);
   const e = getCellCenter(end);
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  const controlX = (s.x + e.x) / 2 + 30 * Math.sin((s.y - e.y) / 100);
-  const controlY = (s.y + e.y) / 2 + 30 * Math.cos((s.x - e.x) / 100);
-  path.setAttribute("d", `M${s.x},${s.y} Q${controlX},${controlY} ${e.x},${e.y}`);
-  path.setAttribute("stroke", "red");
+  const midX = (s.x + e.x) / 2 + 30 * Math.sin((s.y - e.y) / 100);
+  const midY = (s.y + e.y) / 2 + 30 * Math.cos((s.x - e.x) / 100);
+  path.setAttribute("d", `M${s.x},${s.y} Q${midX},${midY} ${e.x},${e.y}`);
+  path.setAttribute("stroke", "green");
   path.setAttribute("stroke-width", "5");
   path.setAttribute("fill", "none");
   path.setAttribute("stroke-linecap", "round");
@@ -68,47 +62,47 @@ function drawLadder(start, end) {
   ladder.setAttribute("y1", s.y);
   ladder.setAttribute("x2", e.x);
   ladder.setAttribute("y2", e.y);
-  ladder.setAttribute("stroke", "gold");
+  ladder.setAttribute("stroke", "#d4af37");
   ladder.setAttribute("stroke-width", "6");
-  ladder.setAttribute("stroke-dasharray", "8,4");
+  ladder.setAttribute("stroke-dasharray", "5,5");
   overlay.appendChild(ladder);
 }
 
 function drawPlayers() {
-  positions.forEach((pos, index) => {
+  positions.forEach((pos, idx) => {
     if (pos <= 0) return;
     const { x, y } = getCellCenter(pos);
-    ctx.fillStyle = index === 0 ? 'red' : 'blue';
+    ctx.fillStyle = idx === 0 ? '#ff9800' : '#03a9f4';
     ctx.beginPath();
-    ctx.arc(x + (index * 10 - 5), y, 8, 0, Math.PI * 2);
+    ctx.arc(x + (idx * 12 - 6), y, 10, 0, Math.PI * 2);
     ctx.fill();
   });
 }
 
 function movePlayer() {
   const input = document.getElementById('score');
-  const value = parseInt(input.value);
-  if (isNaN(value) || value <= 0) {
-    alert('Enter a valid score');
+  const score = parseInt(input.value);
+  if (isNaN(score) || score <= 0) {
+    alert('Enter a valid score!');
     return;
   }
 
-  let pos = positions[currentPlayer] + value;
-  if (pos > 100) pos = 100;
+  let next = positions[currentPlayer] + score;
+  if (next > 100) next = 100;
 
-  if (snakes[pos]) pos = snakes[pos];
-  else if (ladders[pos]) pos = ladders[pos];
+  if (snakes[next]) next = snakes[next];
+  else if (ladders[next]) next = ladders[next];
 
-  positions[currentPlayer] = pos;
+  positions[currentPlayer] = next;
   drawBoard();
 
-  if (pos === 100) {
+  if (next === 100) {
     alert(`Player ${currentPlayer + 1} wins!`);
     return;
   }
 
   currentPlayer = 1 - currentPlayer;
-  document.getElementById('current-player').innerText = currentPlayer + 1;
+  document.getElementById('current-player').textContent = currentPlayer + 1;
   input.value = '';
 }
 
